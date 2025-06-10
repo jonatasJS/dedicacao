@@ -11,6 +11,8 @@ import {
   InputOTPSlot
 } from "@/components/ui/input-otp";
 
+export const dynamic = 'force-static';
+
 export default function Home() {
   const router = useRouter();
   const [otp, setOtp] = useState("");

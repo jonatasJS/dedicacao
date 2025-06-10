@@ -16,6 +16,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 
+export const dynamic = 'force-static';
+
 const images = [
   "/images/amor/IMG_9963.jpg",
   "/images/amor/IMG_9958.jpg",
