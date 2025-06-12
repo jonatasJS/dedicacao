@@ -22,6 +22,7 @@ export default function Home() {
     setOtp(value);
     setErrorMessage("");
   };
+
   const handleSubmit = () => {
     if (otp === "0512") {
       localStorage.setItem('loggedIn', 'true');
@@ -32,7 +33,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-8 pb-20 gap-10 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+    <div className="flex flex-col items-center justify-center min-h-screen p-8 pb-20 gap-10 sm:p-20">
       <h1 className="text-center text-2xl font-bold">Para acessar o site, coloque a senha abaixo:</h1>
       <InputOTP maxLength={4} value={otp} onChange={handleOtpChange}>
         <InputOTPGroup>
@@ -49,6 +50,6 @@ export default function Home() {
       <p className="text-sm text-center text-muted-foreground">
         <strong>Dica da senha:</strong> "O dia e o mês em que a nossa história ganhou um sim especial."
       </p>
-    </div >
+    </div>
   );
 }

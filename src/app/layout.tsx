@@ -1,30 +1,32 @@
+'use client';
+
 import "./globals.css";
 import type { Metadata } from "next";
-
-import { Geist, Geist_Mono } from "next/font/google";
-
 import { ThemeProvider } from "@/components/theme-provider";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export const metadata: Metadata = {
-  title: "Meu amor",
-  description: "Aqui está um site para você com amor e carinho, espero que você goste! 💖 Feliz dia dos namorados!",
-};
+import { motion, AnimatePresence } from "framer-motion";
+import { usePathname } from "next/navigation";
+import React from "react";
+import { OfflineIndicator } from "@/components/OfflineIndicator";
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const pathname = usePathname();
+
+  const pageVariants = {
+    initial: { opacity: 0, x: -100 },
+    animate: { opacity: 1, x: 0 },
+    exit: { opacity: 0, x: 100 },
+  };
+
+  const pageTransition = {
+    type: "tween",
+    ease: "anticipate",
+    duration: 0.5,
+  };
+
   return (
     <html
       lang="pt-BR"
@@ -32,7 +34,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className="antialiased"
       >
         <ThemeProvider
           attribute="class"
@@ -40,8 +42,21 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={pathname}
+              variants={pageVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              transition={pageTransition}
+              className="h-full w-full"
+            >
+              {children}
+            </motion.div>
+          </AnimatePresence>
         </ThemeProvider>
+        <OfflineIndicator />
       </body>
     </html>
   );
