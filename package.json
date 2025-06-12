@@ -1,6 +1,6 @@
 {
   "name": "dedicacao",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
@@ -22,7 +22,7 @@
     "input-otp": "^1.4.2",
     "lucide-react": "^0.513.0",
     "next": "15.3.3",
-    "next-pwa": "^7.0.0",
+    "@ducanh2912/next-pwa": "^7.0.0",
     "next-themes": "^0.4.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -30,7 +30,6 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
-    "@types/next-pwa": "^5.6.9",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
